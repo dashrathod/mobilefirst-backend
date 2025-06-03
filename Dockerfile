@@ -13,5 +13,6 @@ COPY . .
 
 EXPOSE 3000
 
-# CMD ["npm","start"]
-CMD ["sh", "./docker-entrypoint.sh"]
+# RUN ["npx" ,"sequelize-cli", "db:migrate"]
+CMD ["npm","run", "docker"]
+# CMD ["sh", "./docker-entrypoint.sh"]

@@ -14,7 +14,7 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
@@ -31,7 +31,7 @@ services:
       image: obsidiandynamics/kafdrop
       restart: "no"
       environment:
-        KAFKA_BROKERCONNECT: "localhost:9092"
+        KAFKA_BROKERCONNECT: "kafka:9092"
         # JVM_OPTS: "-Xms16M -Xmx512M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
       ports:
         - 9000:9000
@@ -88,8 +88,8 @@ services:
         condition: service_healthy
     volumes:
       - .:/usr/src/app
-    restart: unless-stopped
+  #   restart: unless-stopped
 
 volumes:
   db-data:
-    driver: local
+    # driver: local
