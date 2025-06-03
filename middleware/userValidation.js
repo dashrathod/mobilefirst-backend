@@ -7,9 +7,9 @@ const Op = DB.Sequelize.Op;
 module.exports = {
     loginValidation: async function (req, res, next) {
         try {
-            await check('email', 'Invalid email').not().isEmpty().isEmail().trim().escape().run(req);
+            await check('email', 'Invalid email').notEmpty().isEmail().trim().escape().run(req);
 
-            await check('password', 'Invalid password').isString().not().isEmpty().trim().escape().run(req);
+            await check('password', 'Invalid password').isString().notEmpty().trim().escape().run(req);
 
             //checking validation
             let errors = validationResult(req);
@@ -19,18 +19,18 @@ module.exports = {
                 next();
             }
         } catch (error) {
-            return res.json({ message: 'server Error'});
+            return res.json({ message: 'server Error' });
         }
     },
     registerValidation: async function (req, res, next) {
         try {
-            await check('firstName', 'Invalid firstName').isString().not().isEmpty().trim().escape().run(req);
+            await check('firstName', 'Invalid firstName').isString().notEmpty().trim().escape().run(req);
 
-            await check('lastName', 'Invalid lastName').isString().not().isEmpty().trim().escape().run(req);
+            await check('lastName', 'Invalid lastName').isString().notEmpty().trim().escape().run(req);
 
-            await check('email', 'Invalid email').not().isEmpty().isEmail().trim().escape().run(req);
+            await check('email', 'Invalid email').notEmpty().isEmail().trim().escape().run(req);
 
-            await check('password', 'Invalid password').isString().not().isEmpty().trim().escape().run(req);
+            await check('password', 'Invalid password').isString().notEmpty().trim().escape().run(req);
 
             //checking validation
             let errors = validationResult(req);
@@ -40,8 +40,7 @@ module.exports = {
                 next();
             }
         } catch (error) {
-            return res.json({ message: 'server Error'});
+            return res.json({ message: 'server Error' });
         }
     },
-
 }

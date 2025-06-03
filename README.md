@@ -14,10 +14,15 @@ npx sequelize-cli db:migrate
 
 
 
-Your Node.js app: http://localhost:3000
+Your Node.js WEB-app: http://localhost:3000
 
 phpMyAdmin: http://localhost:8080
 
+kafdrop monitor kafka : http://localhost:9000/
+
+API base url : http://localhost:3000/emit
+
+Test Socket connection use : http://localhost:3000/emit/<any random data>
 
 
 <!-- links -->

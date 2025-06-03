@@ -1,5 +1,7 @@
 var express = require('express');
 const { isLogin, isLogout } = require('../middleware/checkLogin');
+const { createOrder } = require('../controllers/OrderController');
+const { createOrderValidation } = require('../middleware/userValidation');
 var router = express.Router();
 
 router.get('/dashboard', isLogin, function (req, res, next) {
@@ -28,6 +30,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/emit/:data?', function (req, res, next) {
+    // io_socket.broadcat().emit("testing", req.params.data || ('0000' + Math.floor(Math.random() * 10000)).slice(-4));
     io_socket.emit("testing", req.params.data || ('0000' + Math.floor(Math.random() * 10000)).slice(-4));
     return res.json({});
 });

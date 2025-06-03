@@ -12,13 +12,16 @@ require('./database_config/models/index.js');
 const passport = require('passport');
 require('./config/passport-config.js')(passport);
 // require('./config/socket-config.js');
+var kafka = require('./config/kafka-config.js');
+kafka.startKafka();
 //#endregion
 
-DB.sequelize.sync({ alter: true });
-console.log("All models were synchronized successfully.");
+// DB.sequelize.sync({ alter: true });
+// console.log("All models were synchronized successfully.");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var ordersRouter = require('./routes/order.js');
 
 var app = express();
 
@@ -55,6 +58,7 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/orders', ordersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

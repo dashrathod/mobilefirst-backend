@@ -50,6 +50,9 @@ var io_socket = io.on("connection", async function (socket) {
   socket.on("order-events", (data) => {
     console.log("new order-events occurs", data);
   });
+  socket.on("join", (data) => {
+    socket.join(data);//userid wise join in room
+  });
   return socket;
 });
 global.io_test = io;
